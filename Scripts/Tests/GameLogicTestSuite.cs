@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 public class GameLogicTestSuite
@@ -11,7 +12,7 @@ public class GameLogicTestSuite
         PlayArea playArea = new PlayArea();
         Player player = new Player(playArea);
         
-        Assert.Throws<System.ArgumentOutOfRangeException>(() => player.Play(x, y));
+        Assert.Throws<ArgumentOutOfRangeException>(() => player.Play(x, y));
     }
     
     [Test]
@@ -33,6 +34,6 @@ public class GameLogicTestSuite
         Player player = new Player(playArea);
         
         player.Play(1, 1);
-        Assert.Throws<System.InvalidOperationException>(() => player.Play(1, 1), "The position has already been marked.");
+        Assert.Throws<InvalidOperationException>(() => player.Play(1, 1), "The position has already been marked.");
     }
 }
