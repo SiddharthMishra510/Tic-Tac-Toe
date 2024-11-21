@@ -25,4 +25,14 @@ public class GameLogicTestSuite
         
         Assert.DoesNotThrow(() => player.Play(x, y));
     }
+    
+    [Test]
+    public void Mark_OnAlreadyMarked_Fails()
+    {
+        PlayArea playArea = new PlayArea();
+        Player player = new Player(playArea);
+        
+        player.Play(1, 1);
+        Assert.Throws<System.InvalidOperationException>(() => player.Play(1, 1), "The position has already been marked.");
+    }
 }
