@@ -1,13 +1,14 @@
-using System;
-
 public class Player
 {
+    private readonly PlayArea playArea;
+    
     public Player(PlayArea playArea)
     {
+        this.playArea = playArea;
     }
 
     public void Play(int x, int y)
     {
-        throw new ArgumentOutOfRangeException();
+        playArea.Mark(x, y);
     }
 }
