@@ -1,3 +1,5 @@
+using System;
+
 public class Player
 {
     public Player(PlayArea playArea)
@@ -6,6 +8,6 @@ public class Player
 
     public void Play(int x, int y)
     {
-        throw new System.ArgumentOutOfRangeException();
+        throw new ArgumentOutOfRangeException();
     }
 }
