@@ -10,4 +10,13 @@ public class GameLogicTestSuite
         
         Assert.Throws<System.ArgumentOutOfRangeException>(() => player.Play(3, 3));
     }
+    
+    [Test]
+    public void Mark_WithinPlayArea_ExceptionNotThrown()
+    {
+        PlayArea playArea = new PlayArea();
+        Player player = new Player(playArea);
+        
+        Assert.DoesNotThrow(() => player.Play(0, 0));
+    }
 }
