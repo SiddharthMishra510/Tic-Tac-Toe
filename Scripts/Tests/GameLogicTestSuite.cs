@@ -36,4 +36,14 @@ public class GameLogicTestSuite
         player.Play(1, 1);
         Assert.Throws<InvalidOperationException>(() => player.Play(1, 1), "The position has already been marked.");
     }
+
+    [Test]
+    public void PlayerMarks_TwoTimesInARow_ExceptionThrown()
+    {
+        PlayArea playArea = new PlayArea();
+        Player player1 = new Player(playArea);
+        
+        player1.Play(1, 1);
+        Assert.Throws<InvalidOperationException>(() => player1.Play(1, 2), "The position has already played last.");
+    }
 }
