@@ -2,30 +2,44 @@ using System;
 
 public class PlayArea
 {
-    private CellState[,] board = new CellState[3, 3];
-
+    private const int NoOfRows = 3;
+    private const int NoOfCols = 3;
+    
+    private readonly CellState[,] board = new CellState[NoOfRows, NoOfCols];
+    
     public PlayArea()
-    { 
-        for (int i = 0; i < 3; i++)
+    {
+        for (int i = 0; i < NoOfRows; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < NoOfCols; j++)
             {
                 board[i, j] = CellState.Unmarked;
             }
         }
     }
+    
     public void Mark(int x, int y)
     {
-        if (x > 2 || y > 2 || x < 0 || y < 0)
+        if (IsOutsideBounds(x, y))
         {
             throw new ArgumentOutOfRangeException();
         }
 
-        if (board[x, y] != CellState.Unmarked)
+        if (IsMarked(x, y))
         {
             throw new InvalidOperationException();
         }
 
         board[x, y] = CellState.Cross;
+    }
+
+    private bool IsOutsideBounds(int x, int y)
+    {
+        return x > NoOfRows - 1 || y > NoOfCols - 1 || x < 0 || y < 0;
+    }
+    
+    private bool IsMarked(int x, int y)
+    {
+        return board[x, y] != CellState.Unmarked;
     }
 }
