@@ -28,7 +28,7 @@ public class GameLogicTestSuite
     }
     
     [Test]
-    public void Mark_OnAlreadyMarked_Fails()
+    public void Mark_OnAlreadyMarked_ExceptionThrown()
     {
         PlayArea playArea = new PlayArea();
         Player player = new Player(playArea);
