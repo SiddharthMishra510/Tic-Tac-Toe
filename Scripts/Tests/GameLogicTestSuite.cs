@@ -53,4 +53,16 @@ public class GameLogicTestSuite
         bool isLastPlayedByPost = turnKeeper.IsLastPlayedBy(player.GetGuid());
         Assert.IsFalse(isLastPlayedByPre == isLastPlayedByPost);
     }
+
+    [Test]
+    public void PlayerMarks_TwiceInARow_ThrowsException()
+    {
+        PlayArea playArea = new PlayArea();
+        TurnKeeper turnKeeper = new TurnKeeper();
+        Player player = new Player(playArea, turnKeeper);
+
+        player.Play(1, 0);
+
+        Assert.Throws<InvalidOperationException>(() => player.Play(1, 2), "This player has already played.");
+    }
 }
