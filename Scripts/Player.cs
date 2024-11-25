@@ -3,8 +3,8 @@ using System;
 public class Player
 {
     private readonly PlayArea playArea;
-    private Guid guid;
-    private TurnKeeper turnKeeper;
+    private readonly Guid guid;
+    private readonly TurnKeeper turnKeeper;
 
     public Player(PlayArea playArea, TurnKeeper turnKeeper)
     {
