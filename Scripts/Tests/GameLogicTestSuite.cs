@@ -59,4 +59,15 @@ public class GameLogicTestSuite
 
         Assert.Throws<InvalidOperationException>(() => player.Play(1, 2), "This player has already played.");
     }
+
+    [Test]
+    public void Player1MarksAfterPlayer2_ExceptionNotThrown()
+    {
+        Player player1 = new Player(playArea, turnKeeper);
+        Player player2 = new Player(playArea, turnKeeper);
+
+        player1.Play(0, 0);
+        player2.Play(1, 1);
+        Assert.DoesNotThrow(() => player1.Play(2, 2));
+    }
 }
