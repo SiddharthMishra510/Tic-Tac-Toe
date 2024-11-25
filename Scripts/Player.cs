@@ -15,6 +15,11 @@ public class Player
 
     public void Play(int x, int y)
     {
+        if (turnKeeper.IsLastPlayedBy(guid))
+        {
+            throw new InvalidOperationException("This player has already played.");
+        }
+
         playArea.Mark(x, y);
         turnKeeper.RegisterTurn(guid);
     }
