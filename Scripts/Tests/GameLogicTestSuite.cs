@@ -10,7 +10,8 @@ public class GameLogicTestSuite
     public void Mark_OutsidePlayArea_ExceptionThrown(int x, int y)
     {
         PlayArea playArea = new PlayArea();
-        Player player = new Player(playArea);
+        TurnKeeper turnKeeper = new TurnKeeper();
+        Player player = new Player(playArea, turnKeeper);
 
         Assert.Throws<ArgumentOutOfRangeException>(() => player.Play(x, y));
     }
@@ -22,7 +23,8 @@ public class GameLogicTestSuite
     public void Mark_WithinPlayArea_ExceptionNotThrown(int x, int y)
     {
         PlayArea playArea = new PlayArea();
-        Player player = new Player(playArea);
+        TurnKeeper turnKeeper = new TurnKeeper();
+        Player player = new Player(playArea, turnKeeper);
 
         Assert.DoesNotThrow(() => player.Play(x, y));
     }
@@ -31,7 +33,8 @@ public class GameLogicTestSuite
     public void Mark_OnAlreadyMarked_ExceptionThrown()
     {
         PlayArea playArea = new PlayArea();
-        Player player = new Player(playArea);
+        TurnKeeper turnKeeper = new TurnKeeper();
+        Player player = new Player(playArea, turnKeeper);
 
         player.Play(1, 1);
         Assert.Throws<InvalidOperationException>(() => player.Play(1, 1), "The position has already been marked.");
